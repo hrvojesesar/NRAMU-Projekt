@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "129087476105",
+    "project_id": "notes-pro-9c008",
+    "storage_bucket": "notes-pro-9c008.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129087476105:android:884281ca5a71465f911158",
+        "android_client_info": {
+          "package_name": "ba.sum.fsre.nramu_projekt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvJ9gl4_0vZLq1YOC5uuB8LGqCY_sMsx8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
