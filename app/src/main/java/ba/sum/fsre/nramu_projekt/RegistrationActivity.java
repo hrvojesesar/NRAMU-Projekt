@@ -63,12 +63,12 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         changeInProgress(false);
                         if (task.isSuccessful()) {
-                            Toast.makeText(RegistrationActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
+                            Utility.showToast(RegistrationActivity.this, "Account created successfully");
                             firebaseAuth.getCurrentUser().sendEmailVerification();
                             firebaseAuth.signOut();
                             finish();
                         } else {
-                            Toast.makeText(RegistrationActivity.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            Utility.showToast(RegistrationActivity.this, task.getException().getLocalizedMessage());
                         }
                     }
                 });
