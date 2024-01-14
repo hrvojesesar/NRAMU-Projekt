@@ -9,21 +9,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-
-
-import android.os.Bundle;
-import android.util.Patterns;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.firebase.auth.AuthResult;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -97,6 +87,10 @@ public class RegistrationActivity extends AppCompatActivity {
     boolean validateData(String email, String password, String confirmPassword) {
         if (email.isEmpty()) {
             emailEditText.setError("Invalid email");
+            return false;
+        }
+        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailEditText.setError("Invalid format of email");
             return false;
         }
         if (password.length()<6) {
