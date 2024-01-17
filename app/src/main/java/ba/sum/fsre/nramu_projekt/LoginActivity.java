@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                         //go to mainactivity
                         startActivity(new Intent(LoginActivity.this,MainActivity.class));
                     }else{
-                        Utility.showToast(LoginActivity.this,"Email not verified,Please verify your email.");
+                        Utility.showToast(LoginActivity.this,"Email not verified, please verify your email!");
                     }
                 }else{
                     //login failed
