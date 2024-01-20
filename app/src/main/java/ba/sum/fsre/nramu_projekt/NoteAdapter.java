@@ -1,6 +1,7 @@
 package ba.sum.fsre.nramu_projekt;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,6 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteViewHolder> {
     Context context;
 
-
     public NoteAdapter(@NonNull FirestoreRecyclerOptions<Note> options, Context context) {
         super(options);
         this.context = context;
@@ -27,7 +27,14 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteV
         holder.contentTextView.setText(note.content);
         holder.timestampTextView.setText(Utility.timestampToString(note.timestamp));
 
-
+        holder.itemView.setOnClickListener((v) -> {
+            Intent intent = new Intent(context, NoteDetailsActivity.class);
+            intent.putExtra("title", note.title);
+            intent.putExtra("content", note.content);
+            String docId = this.getSnapshots().getSnapshot(position).getId();
+            intent.putExtra("docId", docId);
+            context.startActivity(intent);
+        });
     }
 
     @NonNull
@@ -40,7 +47,6 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteV
     class NoteViewHolder extends RecyclerView.ViewHolder{
 
         TextView titleTextView,contentTextView,timestampTextView;
-
         public NoteViewHolder(@NonNull View itemView){
             super(itemView);
             titleTextView  = itemView.findViewById(R.id.note_title_text_view);
@@ -48,5 +54,4 @@ public class NoteAdapter extends FirestoreRecyclerAdapter<Note,NoteAdapter.NoteV
             timestampTextView  = itemView.findViewById(R.id.note_timestamp_text_view);
         }
     }
-
 }
